@@ -41,7 +41,7 @@ questionSchema.methods.returnSingleQuestion = function (user) {
         : this.followers.includes(user.id)
         ? true
         : false,
-      favoritesCount: this.favorited.length,
+      // favoritesCount: this.favorited.length,
       author: {
         username: this.author.username,
         bio: this.author.bio,
