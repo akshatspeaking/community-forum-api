@@ -8,9 +8,7 @@ module.exports = {
       let question = await (
         await Question.create(req.body.question)
       ).execPopulate("author");
-      let user = await User.findByIdAndUpdate(req.user.id, {
-        questions: { $push: question.id },
-      });
+      let user = await User.findByIdAndUpdate(req.user.id, { $push: { questions: question.id }});
       res.json(question.returnSingleQuestion(req.user));
     } catch (error) {
       next(error);
