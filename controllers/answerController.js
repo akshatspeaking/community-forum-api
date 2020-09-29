@@ -59,7 +59,9 @@ module.exports = {
   },
   addUpvote: async (req, res, next) => {
     try {
-      if (await Answer.findById(req.params.id).upvotes.includes(req.user.id)) {
+      if (
+        (await Answer.findById(req.params.id)).upvotes.includes(req.user.id)
+      ) {
         return res
           .status(304)
           .json({ success: false, message: "already upvoted" });
