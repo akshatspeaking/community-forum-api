@@ -35,16 +35,9 @@ answerSchema.methods.returnSingleAnswer = function (user) {
         username: this.author.username,
         bio: this.author.bio,
         image: this.author.image,
-        following: !user
-          ? false
-          : this.author.followers.includes(user.id)
-          ? true
-          : false,
       },
     },
   };
 };
 
 module.exports = mongoose.model("answer", answerSchema);
-
-// export default mongoose.model("answer", answerSchema)
