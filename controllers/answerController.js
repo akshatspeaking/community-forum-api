@@ -66,7 +66,7 @@ module.exports = {
         });
         res.status(200).json({ success: true, message: "upvoted" });
       } else {
-        res.status(304).json({ success: true, message: "already upvoted" });
+        res.status(200).json({ success: true, message: "already upvoted" });
       }
     } catch (error) {
       next(error);
