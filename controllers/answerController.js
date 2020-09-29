@@ -57,4 +57,20 @@ module.exports = {
       next(error);
     }
   },
+  addUpvote: async (req, res, next) => {
+    try {
+      await Answer.findOneAndUpdate(req.params.id, {
+        $push: { upvotes: req.user.id },
+      });
+      res.status(200).json({ success: true, message: "upvoted" });
+    } catch (error) {
+      next(error);
+    }
+  },
+  removeUpvote: async (req, res, next) => {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  },
 };

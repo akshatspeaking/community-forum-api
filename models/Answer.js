@@ -31,6 +31,7 @@ answerSchema.methods.returnSingleAnswer = function (user) {
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
       body: this.body,
+      upvotes: this.upvotes,
       author: {
         username: this.author.username,
         bio: this.author.bio,

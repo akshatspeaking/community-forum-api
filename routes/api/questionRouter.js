@@ -12,9 +12,8 @@ var User = require("../../models/User");
 // Global feed
 
 router.get("/test", (req, res) => {
-  res.json({"Success": 123})
-})
-
+  res.json({ Success: 123 });
+});
 
 router.get("/", jwtAuth.optional, async (req, res, next) => {
   try {
@@ -137,5 +136,11 @@ router.delete(
 
 // Read all answers
 router.get("/:slug/answers", answerController.readAllAnswers);
+
+// Upvote Answer
+router.post("/:slug/answers/:id", answerController.addUpvote);
+
+// Remove Upvote
+router.delete("/:slug/answers/:id", answerController.removeUpvote);
 
 module.exports = router;
