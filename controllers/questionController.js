@@ -61,7 +61,7 @@ module.exports = {
         await Question.findOne({ slug: req.params.slug })
       ).execPopulate("author");
       console.log(question, question.returnSingleQuestion(req.user));
-      res.json(question.returnSingleQuestion(req.user));
+      res.json(question);
     } catch (error) {
       next(error);
     }
