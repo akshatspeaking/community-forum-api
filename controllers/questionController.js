@@ -58,9 +58,9 @@ module.exports = {
   },
   readQuestion: async (req, res, next) => {
     try {
-      let question = await (
-        await Question.findOne({ slug: req.params.slug })
-      ).execPopulate("answers");
+      let question = await Question.findOne({
+        slug: req.params.slug,
+      }).execPopulate("answers");
       let jsonQuestion = question.returnSingleQuestion(req.user);
       jsonQuestion.answers = question.answers;
       console.log(jsonQuestion);
