@@ -78,7 +78,7 @@ module.exports = {
     try {
       const findAnswer = await Answer.findById(req.params.id);
       if (findAnswer.upvotes.includes(req.user.id)) {
-        await Answer.findOneAndUpdate(req.params.id, {
+        await Answer.findByIdAndUpdate(req.params.id, {
           $pull: { upvotes: req.user.id },
         });
         res.status(200).json({ success: true, message: "un-upvoted" });
