@@ -1,4 +1,5 @@
 var Question = require("../models/Question");
+var Answer = require("../models/Answer");
 var User = require("../models/User");
 
 module.exports = {
