@@ -8,7 +8,9 @@ module.exports = {
       let question = await (
         await Question.create(req.body.question)
       ).execPopulate("author");
-      let user = await User.findByIdAndUpdate(req.user.id, { $push: { questions: question.id }});
+      let user = await User.findByIdAndUpdate(req.user.id, {
+        $push: { questions: question.id },
+      });
       res.json(question.returnSingleQuestion(req.user));
     } catch (error) {
       next(error);
@@ -58,6 +60,7 @@ module.exports = {
       let question = await (
         await Question.findOne({ slug: req.params.slug })
       ).execPopulate("author");
+      console.log(question, question.returnSingleQuestion(req.user));
       res.json(question.returnSingleQuestion(req.user));
     } catch (error) {
       next(error);
