@@ -63,6 +63,7 @@ module.exports = {
       ).execPopulate("answers");
       let jsonQuestion = question.returnSingleQuestion(req.user);
       jsonQuestion.answers = question.answers;
+      console.log(jsonQuestion);
       res.json(jsonQuestion);
     } catch (error) {
       next(error);
