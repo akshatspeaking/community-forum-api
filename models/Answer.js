@@ -14,10 +14,12 @@ var answerSchema = new Schema(
       required: [true, "Every answer must have an author"],
       ref: "User",
     },
-    upvotes: [{
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    }]
+    upvotes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );
@@ -43,6 +45,6 @@ answerSchema.methods.returnSingleAnswer = function (user) {
   };
 };
 
-// module.exports = mongoose.model("answer", answerSchema);
+module.exports = mongoose.model("answer", answerSchema);
 
-export default mongoose.model("answer", answerSchema)
+// export default mongoose.model("answer", answerSchema)
