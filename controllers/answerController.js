@@ -59,22 +59,15 @@ module.exports = {
   },
   addUpvote: async (req, res, next) => {
     try {
-      if (
-        (await Answer.findById(req.params.id)).upvotes.includes(req.user.id)
-      ) {
-        return res
-          .status(304)
-          .json({ success: false, message: "already upvoted" });
-      }
-      const answer = await Answer.findOneAndUpdate(
-        req.params.id,
-        {
+      const findAnswer = await Answer.findById(req.params.id);
+      if (!findAnswer.upvotes.includes(req.user.id)) {
+        await Answer.findOneAndUpdate(req.params.id, {
           $push: { upvotes: req.user.id },
-        },
-        { new: true }
-      );
-      console.log(answer);
-      return res.status(200).json({ success: true, message: "upvoted" });
+        });
+        res.status(200).json({ success: true, message: "upvoted" });
+      } else {
+        res.status(304).json({ success: true, message: "already upvoted" });
+      }
     } catch (error) {
       next(error);
     }
