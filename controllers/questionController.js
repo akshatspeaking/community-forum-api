@@ -55,7 +55,7 @@ module.exports = {
       next(error);
     }
   },
-  readQuestion: async (req, res) => {
+  readQuestion: async (req, res, next) => {
     try {
       let question = await (
         await Question.findOne({ slug: req.params.slug })
@@ -68,7 +68,7 @@ module.exports = {
       next(error);
     }
   },
-  favoriteQuestion: async (req, res) => {
+  favoriteQuestion: async (req, res, next) => {
     try {
       let check = await Question.findOne({ slug: req.params.slug });
       if (check.favorited.includes(req.user.id)) {
