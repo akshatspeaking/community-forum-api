@@ -138,9 +138,13 @@ router.delete(
 router.get("/:slug/answers", answerController.readAllAnswers);
 
 // Upvote Answer
-router.post("/:slug/answers/:id", answerController.addUpvote);
+router.post("/:slug/answers/:id", jwtAuth.required, answerController.addUpvote);
 
 // Remove Upvote
-router.delete("/:slug/answers/:id", answerController.removeUpvote);
+router.delete(
+  "/:slug/answers/:id",
+  jwtAuth.required,
+  answerController.removeUpvote
+);
 
 module.exports = router;
