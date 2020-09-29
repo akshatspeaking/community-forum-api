@@ -43,4 +43,6 @@ answerSchema.methods.returnSingleAnswer = function (user) {
   };
 };
 
-module.exports = mongoose.model("answer", answerSchema);
+// module.exports = mongoose.model("answer", answerSchema);
+
+export default mongoose.model("answer", answerSchema)

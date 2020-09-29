@@ -21,8 +21,6 @@ module.exports = (passport) => {
             console.log("NO USER FOUND");
             return done({ message: "User not found", status: 420 });
           }
-          //Validate password and make sure it matches with the corresponding hash stored in the database
-          //If the passwords match, it returns a value of true.
           const validate = user.verifyPassword(password);
           if (!validate) {
             console.log("WRONG PASSWORD");

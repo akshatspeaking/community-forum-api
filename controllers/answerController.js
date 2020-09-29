@@ -5,12 +5,12 @@ module.exports = {
   createAnswer: async (req, res, next) => {
     try {
       let art = await Question.findOne({ slug: req.params.slug });
-
+      req.body.answer.question = art.id;
       req.body.answer.author = req.user.id;
       let answer = await (await Answer.create(req.body.answer)).execPopulate(
         "author"
       );
-      answer.question = art.id;
+      // answer.question = art.id;
       let question = await Question.findOneAndUpdate(
         { slug: req.params.slug },
         { push: { answers: answer.id } },
