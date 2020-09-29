@@ -40,4 +40,4 @@ answerSchema.methods.returnSingleAnswer = function (user) {
   };
 };
 
-module.exports = mongoose.model("answer", answerSchema);
+module.exports = mongoose.model("Answer", answerSchema);
