@@ -142,7 +142,7 @@ router.post("/:slug/answers/:id", jwtAuth.required, answerController.addUpvote);
 
 // Remove Upvote
 router.delete(
-  "/:slug/answers/:id",
+  "/:slug/answers/:id/upvote",
   jwtAuth.required,
   answerController.removeUpvote
 );
