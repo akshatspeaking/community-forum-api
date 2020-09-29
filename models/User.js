@@ -88,6 +88,7 @@ userSchema.methods.returnAsUser = function (token) {
   return {
     user: {
       username: this.username,
+      id: this.id,
       email: this.email,
       token: token,
     },
