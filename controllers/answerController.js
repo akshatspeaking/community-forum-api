@@ -7,16 +7,14 @@ module.exports = {
       let art = await Question.findOne({ slug: req.params.slug });
       req.body.answer.question = art.id;
       req.body.answer.author = req.user.id;
-      let answer = await (await Answer.create(req.body.answer)).execPopulate(
-        "author"
-      );
-      // answer.question = art.id;
-      let question = await Question.findOneAndUpdate(
+      let answer = await Answer.create(req.body.answer);
+      await Question.findOneAndUpdate(
         { slug: req.params.slug },
         { push: { answers: answer.id } },
         { new: true }
       );
-      res.json(answer.returnSingleAnswer(req.user));
+      answer = answer.returnSingleAnswer(req.user);
+      res.json(answer);
     } catch (error) {
       next(error);
     }

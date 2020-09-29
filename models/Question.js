@@ -18,11 +18,12 @@ var questionSchema = new Schema(
     },
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     readBy: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    tags: [{
-      type: Schema.Types.ObjectId,
-      ref: "Tag",
-
-    }],
+    tags: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Tag",
+      },
+    ],
   },
   { timestamps: true }
 );
@@ -36,6 +37,7 @@ questionSchema.methods.returnSingleQuestion = function (user) {
       tagList: this.tags,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
+      answers: this.answers,
       following: !user
         ? false
         : this.followers.includes(user.id)
