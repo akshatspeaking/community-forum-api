@@ -64,7 +64,7 @@ module.exports = {
       console.log(question, "QUESTION NON JSON");
       let jsonQuestion = question.returnSingleQuestion(req.user);
       console.log(jsonQuestion);
-      // jsonQuestion.answers = question.answers;
+      jsonQuestion.answers = question.answers;
       res.json(jsonQuestion);
     } catch (error) {
       next(error);
