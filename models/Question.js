@@ -44,11 +44,7 @@ questionSchema.methods.returnSingleQuestion = function (user) {
         ? true
         : false,
       // favoritesCount: this.favorited.length,
-      author: {
-        username: this.author.username,
-        bio: this.author.bio,
-        image: this.author.image,
-      },
+      author: this.author,
     },
   };
 };

@@ -71,7 +71,6 @@ userSchema.methods.verifyPassword = function (plainpwd) {
 
 userSchema.methods.returnAsProfile = function (user) {
   let profile = {
-    name: this.name,
     username: this.username,
     bio: this.bio,
     image: this.avatar,
