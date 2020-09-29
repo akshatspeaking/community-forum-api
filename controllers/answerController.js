@@ -60,14 +60,16 @@ module.exports = {
   addUpvote: async (req, res, next) => {
     try {
       const findAnswer = await Answer.findById(req.params.id);
+      // res.send(findAnswer);
       if (!findAnswer.upvotes.includes(req.user.id)) {
-        await Answer.findOneAndUpdate(req.params.id, {
+        await Answer.findByIdAndUpdate(req.params.id, {
           $push: { upvotes: req.user.id },
         });
         res.status(200).json({ success: true, message: "upvoted" });
       } else {
         res.status(200).json({ success: true, message: "already upvoted" });
       }
+      // res.send("Working");
     } catch (error) {
       next(error);
     }
