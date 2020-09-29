@@ -61,7 +61,7 @@ module.exports = {
         await Question.findOne({ slug: req.params.slug })
       ).execPopulate("answers");
       // console.log(question, question.returnSingleQuestion(req.user));
-      const jsonQuestion = question.returnSingleQuestion(req.user);
+      let jsonQuestion = question.returnSingleQuestion(req.user);
       jsonQuestion.answers = question.answers;
       res.json(jsonQuestion);
     } catch (error) {
