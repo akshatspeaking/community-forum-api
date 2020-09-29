@@ -59,7 +59,7 @@ module.exports = {
     try {
       let question = await (
         await Question.findOne({ slug: req.params.slug })
-      ).execPopulate("author");
+      ).execPopulate("author answers");
       // console.log(question, question.returnSingleQuestion(req.user));
       const jsonQuestion = question.returnSingleQuestion(req.user);
       jsonQuestion.answers = question.answers;
