@@ -10,7 +10,7 @@ module.exports = {
       let answer = await Answer.create(req.body.answer);
       await Question.findOneAndUpdate(
         { slug: req.params.slug },
-        { push: { answers: answer.id } },
+        { $push: { answers: answer.id } },
         { new: true }
       );
       answer = answer.returnSingleAnswer(req.user);
