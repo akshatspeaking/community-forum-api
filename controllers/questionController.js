@@ -62,8 +62,8 @@ module.exports = {
         slug: req.params.slug,
       }).populate("answers");
       let jsonQuestion = question.returnSingleQuestion(req.user);
-      jsonQuestion.answers = question.answers;
       console.log(jsonQuestion);
+      // jsonQuestion.answers = question.answers;
       res.json(jsonQuestion);
     } catch (error) {
       next(error);
