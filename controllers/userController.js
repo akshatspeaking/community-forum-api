@@ -107,7 +107,7 @@ module.exports = {
   },
   verifyUser: (req, res) => {
     if (req.user) {
-      res.json(req.user.returnAsUser(req.user));
+      res.json(req.user.returnAsUser(req.user.token));
     }
   },
 };
