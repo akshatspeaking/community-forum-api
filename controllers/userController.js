@@ -108,6 +108,8 @@ module.exports = {
   verifyUser: (req, res) => {
     if (req.user) {
       res.json(req.user.returnAsUser(req.user.token));
+    } else {
+      res.json({});
     }
   },
 };
