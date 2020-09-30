@@ -4,7 +4,7 @@ var jwt = require("jsonwebtoken");
 module.exports = {
   optional: async (req, res, next) => {
     try {
-      if (req.headers.authorization) {
+      if (req.headers.authorization.length > 8) {
         var decoded = jwt.verify(
           req.headers.authorization.split(" ")[1],
           process.env.secret
