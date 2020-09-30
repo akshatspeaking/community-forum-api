@@ -21,4 +21,7 @@ router.post(
   userController.loginUser
 );
 
+// Verify User token
+router.get("/verify", jwtAuth.optional, userController.verifyUser);
+
 module.exports = router;

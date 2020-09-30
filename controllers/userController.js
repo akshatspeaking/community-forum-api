@@ -105,4 +105,9 @@ module.exports = {
     let userJson = req.user.returnAsUser(token);
     res.json(userJson);
   },
+  verifyUser: (req, res) => {
+    if (req.user) {
+      res.json(req.user.returnAsUser(req.user));
+    }
+  },
 };
