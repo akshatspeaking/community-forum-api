@@ -32,6 +32,7 @@ questionSchema.methods.returnSingleQuestion = function (user) {
   return {
     question: {
       slug: this.slug,
+      id: this.id,
       title: this.title,
       description: this.description,
       tagList: this.tags,
