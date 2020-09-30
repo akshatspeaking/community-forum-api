@@ -60,7 +60,9 @@ module.exports = {
     try {
       let question = await Question.findOne({
         slug: req.params.slug,
-      }).populate("answers");
+      })
+        .populate("answers")
+        .populate("author");
       console.log(question, "QUESTION NON JSON");
       let jsonQuestion = question.returnSingleQuestion(req.user);
       console.log(jsonQuestion);
